@@ -12,7 +12,7 @@ pub fn run(){
     // This contains links to episodes not links to the mpv files
     loop{
     let mut user_episode_num = String::new();
-    println!("{}", "\nWhich episode do you want to play? :q to quit".cyan());
+    println!("{}", "\nWhich episode do you want to download? :q to quit".cyan());
     io::stdin().read_line(&mut user_episode_num).expect("Failed to read Input");
     let trimmed = user_episode_num.trim();
     let user_ep_cvt = trimmed.parse::<i32>();
