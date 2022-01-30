@@ -6,7 +6,7 @@ Note: THIS PROJECT IS A REMAKE OF THE ORIGINAL SPONGBOBCLI (originally written i
   ``
 [Link to original Project](https://github.com/trakBan/spongebob-cli)
 
-![Screenshot of app](./screenshots/Capture.png)
+![Screenshot of app](./screenshots/Capture.PNG)
 
 ### Dependecies:
 -   mpv player  [https://mpv.io/](https://mpv.io/)  (Must be installed through a package manager and added to path ENV)
