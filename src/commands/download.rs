@@ -1,44 +1,50 @@
-use std::io;
 use colored;
 use colored::*;
 use std::process::Command;
 use crate::utility::utls;
 use terminal_spinners::{SpinnerBuilder, DOTS};
 
-pub fn run(){
+pub fn run(downone:bool){
     let html_body:String = utls::request_files();
     let episodes = utls::parse_data(&html_body);
-
-    // This contains links to episodes not links to the mpv files
     loop{
-    let mut user_episode_num = String::new();
-    println!("{}", "\nWhich episode do you want to download? :q to quit".cyan());
-    io::stdin().read_line(&mut user_episode_num).expect("Failed to read Input");
-    let trimmed = user_episode_num.trim();
-    let user_ep_cvt = trimmed.parse::<i32>();
-
-    let user_ep_cvt = match user_ep_cvt{
-        Ok(num)=>num,
-        Err(_)=>break
-    };
-
-    if user_ep_cvt < 0 || user_ep_cvt > episodes.len() as i32{
-        panic!("Please input correct episode number")
-    }
-    let episode_to_play = &episodes[user_ep_cvt as usize -1];
-    let stream_link = utls::get_direct_link(episode_to_play);
-    let mut owned_string: String = " Downloading ".to_owned();
-    owned_string.push_str(episode_to_play);
-    let handle = SpinnerBuilder::new().spinner(&DOTS).text(owned_string).start();
-    let out = Command::new("youtube-dl")
-        .arg(stream_link)
-        .output()
-        .expect("failed to execute process");
-    handle.done();
-    if out.status.success(){
-        println!("{} {}", "Downloaded Episode".green(), episode_to_play);  
-    }else{
-        println!("{} {}", "Could Not Downloaded Episode".red(), episode_to_play);  
+        if downone{
+            let user_opt = utls::prompt_user(&episodes);
+            if user_opt == 1000{break}
+            let episode_to_play = &episodes[user_opt as usize -1];
+            let stream_link = utls::get_direct_link(episode_to_play);
+            let mut owned_string: String = " Downloading ".to_owned();
+            owned_string.push_str(episode_to_play);
+            let handle = SpinnerBuilder::new().spinner(&DOTS).text(owned_string).start();
+            let out = Command::new("youtube-dl")
+                .arg(stream_link)
+                .output()
+                .expect("failed to execute process");
+            handle.done();
+            if out.status.success(){
+                println!("{} {}", "Downloaded Episode".green(), episode_to_play);  
+            }else{
+                println!("{} {}", "Could Not Downloaded Episode".red(), episode_to_play);  
+            }
+        }else{
+            println!("{}", "Getting Ready to Download all Episodes".red());
+            for i in &episodes{
+                let stream_link = utls::get_direct_link(i);
+                let mut owned_string: String = " Downloading ".to_owned();
+                owned_string.push_str(&i);
+                let handle = SpinnerBuilder::new().spinner(&DOTS).text(owned_string).start();
+                let out = Command::new("youtube-dl")
+                .arg(stream_link)
+                .output()
+                .expect("failed to execute process");
+                handle.done();
+                if out.status.success(){
+                    println!("{} {}", "Downloaded Episode".green(), &i);  
+                }else{
+                    println!("{} {}", "Could Not Downloaded Episode".red(), &i);  
+                }
+            }
+        }
     }
 }
-}
+

@@ -8,7 +8,6 @@ pub fn run(){
     let episodes = utls::parse_data(&html_body);
     let mut episode_len = episodes.len() as i32;
     episode_len+=1;
-    // This contains links to episodes not links to the mpv files
     let num:i32 = rand::thread_rng().gen_range(0..episode_len);
     let episode_to_play = &episodes[num as usize];
     let stream_link = utls::get_direct_link(episode_to_play);

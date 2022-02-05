@@ -7,6 +7,8 @@ Note: THIS PROJECT IS A REMAKE OF THE ORIGINAL SPONGBOBCLI (originally written i
 [Link to original Project](https://github.com/trakBan/spongebob-cli)
 
 ![Screenshot of app](./screenshots/Capture.PNG)
+![Help command of app](./screenshots/help.PNG)
+
 
 ### Dependecies:
 -   mpv player  [https://mpv.io/](https://mpv.io/)  (Must be installed through a package manager and added to path ENV)
@@ -21,4 +23,4 @@ This is just a small project i picked to learn Rust ♥
 - Refactor Things
 
 # Contributing
-Clone the repo. Make sure you have mpv installed to path. Work on the feature that you want. Make sure to create change logs before making a pull request. 
+Clone the repo. Make sure you have mpv installed to path. Work on the feature that you want. Make sure to create change logs before making a pull request.
