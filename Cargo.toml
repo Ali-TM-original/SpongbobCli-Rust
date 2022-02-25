@@ -1,7 +1,15 @@
 [package]
 name = "spongbobcli"
-version = "1.1.0"
+version = "1.2.0"
 edition = "2021"
+description = "A blazingly fast cli tool to watch your favorite spongbob episodes"
+readme = "README.md"
+repository = "https://github.com/Ali-TM-original/SpongbobCli-Rust"
+license = "MIT OR Apache-2.0"
+license-file = "LICENSE"
+keywords = ["spongbob-cli", "spongbobCli-Rust", "Fast", "Rust-cli-tool"]
+categories = ["command-line-utilities","Toons"]
+authors = ["Ali™ alidev.tech"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
