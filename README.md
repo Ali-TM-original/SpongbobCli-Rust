@@ -15,12 +15,19 @@ Note: THIS PROJECT IS A REMAKE OF THE ORIGINAL SPONGBOBCLI (originally written i
 - Youtube-dl [Official Repo](https://github.com/ytdl-org/youtube-dl) ( Must be installed and added to ENV PATH)
 <h1>The main entry point is in ./src/main.rs</h1>
 
+### How to install ( recommended to build your own :)  )
+- Download and install Cargo from here ==> [Official Rust Compiler](https://www.rust-lang.org/)
+- Clone the repo using git or any other method
+- use command ``cargo build --release `` (takes time but is optimized) or ``cargo build`` (not optimized)
+- now go to the ``.\target\release`` Directory and find the exe 
+- add the exe to path and voila
+
 ### Currently In development
 This is just a small project i picked to learn Rust ♥
 
-# Things to fix
-- Add Downloading all videos feature
+# Things to fix/Do
 - Refactor Things
+- Add project to [official Rust Pkg manager](https://crates.io/)
 
 # Contributing
 Clone the repo. Make sure you have mpv installed to path. Work on the feature that you want. Make sure to create change logs before making a pull request.
